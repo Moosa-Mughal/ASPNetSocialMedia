@@ -1,6 +1,9 @@
 using ASPNetSocialMedia.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,10 +14,25 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+//Code for Database
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ApplicationDbContext>();
+    context.Database.Migrate();
+    // Don't forget to use: dotnet user-secrets set SeedUserPW <pw>
+
+    var testUserPw = builder.Configuration.GetValue<string>("SeedUserPW");
+
+    await SeedData.Initialize(services, testUserPw);
+}
+//End of code for database
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

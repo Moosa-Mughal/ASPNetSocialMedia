@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ASPNetSocialMedia.Models;
 
 namespace ASPNetSocialMedia.Data
 {
@@ -9,5 +10,6 @@ namespace ASPNetSocialMedia.Data
             : base(options)
         {
         }
+        public DbSet<ASPNetSocialMedia.Models.User> User { get; set; }
     }
 }

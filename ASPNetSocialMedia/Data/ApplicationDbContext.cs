@@ -11,5 +11,6 @@ namespace ASPNetSocialMedia.Data
         {
         }
         public DbSet<ASPNetSocialMedia.Models.User> User { get; set; }
+        public DbSet<ASPNetSocialMedia.Models.Friendship> Friendship { get; set; }
     }
 }

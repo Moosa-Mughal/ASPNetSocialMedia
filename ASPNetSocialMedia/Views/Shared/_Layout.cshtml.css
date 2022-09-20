@@ -1,49 +1,41 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-a {
-  color: #0077cc;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-.footer {
+#footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    color: white;
-    text-align: center;
-    height: 5%;
+}
+
+.sidebar {
+    height: 100%;
+    width: 15vw;
+    position: fixed;
+    left: 0;
+    background-color: #D9D7F1;
+    font-family: 'Open Sans', sans-serif;
+    padding: 1vw;
+    text-align:center;
+}
+
+
+.body-text {
+    margin-left: 150px;
+    font-size: 18px;
+}
+
+#tab {
+    padding: 0.25vw;
+    font-size: 1.5vw;
+    word-wrap: break-word;
+}
+
+.pb-3{
+    margin-left: 15vw;
+}
+
+#profile{
+    width: 12vw;
+    height: 12vw;
+    padding: 1vw;
+}

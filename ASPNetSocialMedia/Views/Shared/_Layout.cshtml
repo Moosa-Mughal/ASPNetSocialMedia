@@ -58,6 +58,9 @@
                     <div id="tab">
                         <a class="nav-text" asp-area="" asp-controller="Home" asp-action="Chat">Public Chat</a>
                     </div>
+                    <div id="tab">
+                        <a asp-action="Edit" asp-route-email="@UserManager.GetUserName(User)">Edit personal information</a>
+                    </div>
                 </div>
 
             }

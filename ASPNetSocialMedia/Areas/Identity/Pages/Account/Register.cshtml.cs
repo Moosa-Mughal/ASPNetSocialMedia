@@ -71,6 +71,10 @@ namespace FinalProjectCSharp.Areas.Identity.Pages.Account
         /// </summary>
         public class InputModel
         {
+
+            //SUPER CODE
+            public string FirstName { get; set; }
+            //END OF SUPER CODE
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -119,11 +123,13 @@ namespace FinalProjectCSharp.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync((ApplicationUser)user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync((ApplicationUser)user, Input.Password);
 
+ 
+
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync((ApplicationUser)user, "User");
                     _logger.LogInformation("User created a new account with password.");
-
+                   
                     var userId = await _userManager.GetUserIdAsync((ApplicationUser)user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync((ApplicationUser)user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

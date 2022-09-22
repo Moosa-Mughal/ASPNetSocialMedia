@@ -5,6 +5,27 @@ namespace ASPNetSocialMedia.Models
 {
     public class ApplicationUser:IdentityUser
     {
+        public ApplicationUser(string? firstName, string? lastName, DateTime? dateOfBirth, string? biography, string? profileImage, string? address, int? age)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            DateOfBirth = dateOfBirth;
+            Biography = biography;
+            ProfileImage = profileImage;
+            Address = address;
+            Age = age;
+        }
+
+        public ApplicationUser()
+        {
+
+        }
+
+        public ApplicationUser(string? firstName)
+        {
+            FirstName = firstName;
+        }
+
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
 
@@ -15,5 +36,7 @@ namespace ASPNetSocialMedia.Models
         public string? ProfileImage { get; set; } = "NoImageFound.png";
         public string? Address { get; set; }
         public int? Age { get; set; }
+
+        
     }
 }

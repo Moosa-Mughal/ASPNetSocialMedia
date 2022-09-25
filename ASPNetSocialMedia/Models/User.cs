@@ -21,5 +21,9 @@ namespace ASPNetSocialMedia.Models
         public int Age { get; set; }
         public string? PhoneNumber { get; set; }
         public string? AdminID { get; set; }
+
+        public class FindFirst
+        {
+        }
     }
 }

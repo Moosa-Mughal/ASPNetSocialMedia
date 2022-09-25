@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace ASPNetSocialMedia.Models
 {
@@ -7,7 +7,6 @@ namespace ASPNetSocialMedia.Models
         public int? PostId { get; set; }
         public string? PostContent { get; set; }
         public string? WhoPosted { get; set; }
-
 
         public int CreatePost()
         {
@@ -20,5 +19,4 @@ namespace ASPNetSocialMedia.Models
             return i;
         }
     }
-
 }

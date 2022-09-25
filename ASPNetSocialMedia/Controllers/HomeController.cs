@@ -27,6 +27,20 @@ namespace ASPNetSocialMedia.Controllers
             return View();
         }
 
+        public IActionResult Chat()
+        {
+            return View();
+        }
+
+        public IActionResult Weather()
+        {
+            return View();
+        }
+        public IActionResult Quote()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

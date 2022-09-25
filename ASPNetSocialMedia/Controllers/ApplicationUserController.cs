@@ -26,15 +26,18 @@ namespace ASPNetSocialMedia.Controllers
         }
 
         // GET: ApplicationUser/Details/5
+
         public async Task<IActionResult> Details(string? id)
         {
             if (id == null || _context.ApplicationUser == null)
+
             {
                 return NotFound();
             }
 
             var ApplicationUser = await _context.ApplicationUser
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (ApplicationUser == null)
             {
                 return NotFound();
@@ -117,6 +120,7 @@ namespace ASPNetSocialMedia.Controllers
         }
 
         // GET: ApplicationUser/Delete/5
+
         public async Task<IActionResult> Delete(string? id)
         {
             if (id == null || _context.ApplicationUser == null)
@@ -125,7 +129,9 @@ namespace ASPNetSocialMedia.Controllers
             }
 
             var ApplicationUser = await _context.ApplicationUser
+
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (ApplicationUser == null)
             {
                 return NotFound();
@@ -137,13 +143,17 @@ namespace ASPNetSocialMedia.Controllers
         // POST: ApplicationUser/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> DeleteConfirmed(string? id)
+
         {
             if (_context.ApplicationUser == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.ApplicationUser'  is null.");
             }
+
             var ApplicationUser = await _context.ApplicationUser.FindAsync(id);
+
             if (ApplicationUser != null)
             {
                 _context.ApplicationUser.Remove(ApplicationUser);
@@ -156,6 +166,7 @@ namespace ASPNetSocialMedia.Controllers
         private bool ApplicationUserExists(string? id)
         {
           return _context.ApplicationUser.Any(e => e.Id == id);
+
         }
     }
 }

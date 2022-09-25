@@ -1,6 +1,6 @@
-﻿@using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,9 +90,9 @@
 
                     <!--Find Friends-->
                     <div id="tab">
-<<<<<<< Updated upstream
+
                         <a class="nav-text" asp-area="" asp-controller="Users" asp-action="Index">Find Friends</a>
-=======
+
                         <img src="https://i.ibb.co/P9WtZBV/friends.png" alt="friends" width="30">
                         <a href="/ApplicationUser">Find Friends</a>
                     </div>
@@ -107,7 +107,6 @@
                     <div id="tab">
                         <img src="https://i.ibb.co/DzRh382/logout.png" alt="logout" width="30">
                         <a href="/Identity/Account/Logout?returnUrl=%2F">Logout</a>
->>>>>>> Stashed changes
                     </div>
 
                 </div>

@@ -1,16 +1,9 @@
 @using Microsoft.AspNetCore.Identity
-<<<<<<< Updated upstream
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
-=======
+
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 @using System.Security.Claims
 @model ASPNetSocialMedia.Models.Post
-
->>>>>>> Stashed changes
-
-
 
 <!doctype html>
 <html>
@@ -52,7 +45,6 @@
             </div>
         </div>
         
-
     }
 
     else{

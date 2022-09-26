@@ -4,6 +4,7 @@ using ASPNetSocialMedia.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASPNetSocialMedia.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220926174003_CloseFriendsAndPrivateMessage")]
+    partial class CloseFriendsAndPrivateMessage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,28 +169,6 @@ namespace ASPNetSocialMedia.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Friendship");
-                });
-
-            modelBuilder.Entity("ASPNetSocialMedia.Models.Messages", b =>
-                {
-                    b.Property<int?>("MessageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MessageId"), 1L, 1);
-
-                    b.Property<string>("MessageContent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WhoPosted")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WhoReceived")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MessageId");
-
-                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("ASPNetSocialMedia.Models.Post", b =>

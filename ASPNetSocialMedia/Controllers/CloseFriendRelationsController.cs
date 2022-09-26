@@ -71,14 +71,34 @@ namespace ASPNetSocialMedia.Controllers
             if (UserExist > 0)
             {
                 con.Close();
-                if (ModelState.IsValid)
+                //Friend verification
+                SqlConnection conn = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB; Database=aspnet-ASPNetSocialMedia-2E74CB14-DD3A-4442-9DCF-EC4C63E8F3F6; Integrated Security=True");
+                con.Open();
+                SqlCommand check_UserExist = new SqlCommand("SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = '" + closeFriendRelation.CloseFriendEmail + "'", con);
+                check_User_Name.Parameters.AddWithValue("@user", closeFriendRelation.CloseUserEmail);
+                Console.Write(closeFriendRelation.CloseUserEmail);
+
+                int UserIsFriend = (int)check_UserExist.ExecuteScalar();
+
+                if (UserExist > 0)
                 {
-                    _context.Add(closeFriendRelation);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
+                    conn.Close();
+                    if (ModelState.IsValid)
+                    {
+                        _context.Add(closeFriendRelation);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction(nameof(Index));
+                    }
+
+                    return View(closeFriendRelation);
+                }
+                else
+                {
+                    con.Close();
+                    ViewData["Success"] = "You are not friend with the user.";
+                    return View(closeFriendRelation);
                 }
 
-                return View(closeFriendRelation);
             }
             else
             {

@@ -20,95 +20,89 @@
     
     @if (SignInManager.IsSignedIn(User))
     {
-        <div  id="alert" class="alert alert-info" role="alert">
-            Click here to edit your profile information
-            <button type="button" class="btn btn-info">
-                <a href="/Home/CompleteProfile">Edit Profile</a>
-            </button>
-        </div>
+        <style>
+              .cards-container {
+                 column-count: 2;
+               }
 
-        <!--Create Post-->
-        <div class="card" style="width: 40rem;">
-            <div class="card-body">
-                <h5 class="card-title">Post</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Tell About Your Day</h6>
-                <form asp-controller="Posts" asp-action="Create">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <div class="form-group">
-                        <textarea asp-for="PostContent" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="hidden" asp-for="WhoPosted" class="form-control" value="@User.FindFirst(ClaimTypes.NameIdentifier).Value" />
-                        
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Post" class="btn btn-info" style="margin-top:10px" />
-                    </div>
-                </form>
+
+               .cards-container div {
+               -webkit-column-break-inside: avoid;
+               page-break-inside: avoid;
+               break-inside: avoid;
+               
+               }
+
+            @@media only screen and (max-width: 800px) {
+              .cards-container {
+                 column-count: 1;
+               }
+            }
+
+             
+        </style>
+
+            <div id="alert" class="alert alert-info" role="alert">
+                Click here to edit your profile information
+                <button type="button" class="btn btn-info">
+                    <a href="/Home/CompleteProfile">Edit Profile</a>
+                </button>
             </div>
-        </div>
-        
 
 
+            <div class="cards-container">
+            <div class="col-md-6" style="width:100%;">
+             <!--Create Post-->
+              
+            <div class="card" >
+                <div class="card-body">
+                    <h5 class="card-title">Post</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Tell About Your Day</h6>
+                    <form asp-controller="Posts" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <textarea asp-for="PostContent" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" asp-for="WhoPosted" class="form-control" value="@User.FindFirst(ClaimTypes.NameIdentifier).Value" />
 
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Post" class="btn btn-info" style="margin-top:10px" />
+                        </div>
+                    </form>
+                </div>
+             </div>
+             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-                <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-                <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-                <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+            <div class="col-md-6" style="width:100%;">
+            <!--Weather-->
+            <div class="card">
+                <div class="card-body">
+                <div class="search">
+                    <input type="text" class="search-bar" placeholder="Search">
+                            <button>Search City</button>
+                </div>
+                <div class="weather loading">
+                    <h2 class="city"></h2>
+                    <h1 class="temp"></h1>
+                    <h4 class="temp-min"></h4>
+                    <h4 class="temp-max"></h4>
+                    <div class="flex">
+                        <img src="" alt="weather icon" class="icon" />
+                        <div class="description"></div>
+                    </div>
+                    <div class="humidity"></div>
+                    <div class="wind"></div>
+                </div>
+                </div>
+            </div>
+            </div>
+            </div>
     }
 
     else{
-        
+      
         <style>
             #main{
                 width: 100%;

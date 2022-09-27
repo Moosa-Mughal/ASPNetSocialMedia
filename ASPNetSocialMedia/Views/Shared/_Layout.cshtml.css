@@ -2,22 +2,16 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+#navbar {
+    height: 70px;
+}
+
 #footer {
     position: fixed;
+    height: 50px;
     left: 0;
     bottom: 0;
     width: 100%;
-}
-
-.sidebar {
-    height: 100%;
-    width: 15vw;
-    position: fixed;
-    left: 0;
-    background-color: #D9D7F1;
-    font-family: 'Open Sans', sans-serif;
-    
-    text-align:center;
 }
 
 
@@ -26,28 +20,95 @@
     font-size: 18px;
 }
 
-#tab {
-    padding: 0.50vw;
-    font-size: 1vw;
+#profile {
+    margin: 5px;
     word-wrap: break-word;
 }
 
-    #tab a {
-        text-decoration: none;
-        color:black;
-    }
-
-    #tab a:hover {
-        text-decoration: underline;
-        color: black;
-    }
-
-.pb-3{
-    margin-left: 15vw;
+/* The side navigation menu */
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #E7FBBE;
+    position: fixed;
+    top: 70px;
+    bottom: 50px;
+    height: auto;
 }
 
-#profile{
-    width: 12vw;
-    height: 12vw;
-    padding: 1vw;
+
+    /* Sidebar links */
+    .sidebar a {
+        display: block;
+        color: #D2BEFB;
+        padding: 5px;
+        text-decoration: none;
+        font-size-adjust:inherit;
+        font-family: 'Anton', sans-serif;
+        font-size:x-large;
+    }
+
+.dropdown {
+    position: relative;
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#mainBody{
+    margin-left: 22%;
+    margin-top: 100px;
+    margin-right: 100px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+}
+
+    .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+.container {
+    padding: 16px;
+}
+
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 400px) {
+    .sidebar a {
+        text-align: center;
+        float: none;
+        font-size: 10px;
+    }
+}
+
+    /* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+    @media screen and (max-height: 700px) {
+        .sidebar {
+            position:absolute;
+        }
+    }
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+@media screen and (max-width: 900px) {
+    .sidebar {
+        position: absolute;
+    }
+    
 }

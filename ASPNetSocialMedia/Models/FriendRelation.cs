@@ -8,6 +8,7 @@ namespace ASPNetSocialMedia.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int FriendRelationId { get; set; }
+        public string? FriendName { get; set; }
         public string? UserEmail { get; set; }
         public string? FriendEmail { get; set; }
     }

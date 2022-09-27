@@ -44,10 +44,6 @@ namespace ASPNetSocialMedia.Controllers
             return View(friendRelation);
         }
 
-        public IActionResult Error()
-        {
-            return View();
-        }
         // GET: FriendRelations/Create
         public IActionResult Create()
         {
@@ -59,14 +55,14 @@ namespace ASPNetSocialMedia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("FriendRelationId,UserEmail,FriendEmail")] FriendRelation friendRelation)
+        public async Task<IActionResult> Create([Bind("FriendRelationId,FriendName,UserEmail,FriendEmail")] FriendRelation friendRelation)
         {
             SqlConnection con = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB; Database=aspnet-ASPNetSocialMedia-2E74CB14-DD3A-4442-9DCF-EC4C63E8F3F6; Integrated Security=True");
             con.Open();
-            SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = '"+friendRelation.FriendEmail+"'", con);
+            SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = '" + friendRelation.FriendEmail + "'", con);
             check_User_Name.Parameters.AddWithValue("@user", friendRelation.UserEmail);
             Console.Write(friendRelation.UserEmail);
-                
+
             int UserExist = (int)check_User_Name.ExecuteScalar();
 
             if (UserExist > 0)
@@ -78,7 +74,7 @@ namespace ASPNetSocialMedia.Controllers
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
-               
+
                 return View(friendRelation);
             }
             else
@@ -88,12 +84,6 @@ namespace ASPNetSocialMedia.Controllers
                 ViewData["Success"] = "No user with this email is registered";
                 return View(friendRelation);
             }
-            
-
-
-
-
-
         }
 
         // GET: FriendRelations/Edit/5
@@ -117,7 +107,7 @@ namespace ASPNetSocialMedia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("FriendRelationId,UserEmail,FriendEmail")] FriendRelation friendRelation)
+        public async Task<IActionResult> Edit(int id, [Bind("FriendRelationId,FriendName,UserEmail,FriendEmail")] FriendRelation friendRelation)
         {
             if (id != friendRelation.FriendRelationId)
             {

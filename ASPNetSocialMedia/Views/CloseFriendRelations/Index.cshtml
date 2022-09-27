@@ -4,19 +4,19 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Your close friend list</h1>
+<h1>Friend List</h1>
 
 <p>
-    <a asp-action="Create">Add one of your friend as a close friend!</a>
+    <a asp-action="Create">Add a new close friend!</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                Close Friend List
+                Close Friend Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CloseFriendEmail)
+                Close Friend Email
             </th>
             <th></th>
         </tr>
@@ -25,11 +25,14 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.CloseFriendName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CloseFriendEmail)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CloseFriendRelationId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CloseFriendRelationId">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.CloseFriendRelationId">Edit Contact Name</a> |
+                <a asp-action="Details" asp-route-id="@item.CloseFriendRelationId">Message History</a> |
                 <a asp-action="Delete" asp-route-id="@item.CloseFriendRelationId">Delete</a>
             </td>
         </tr>

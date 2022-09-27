@@ -8,6 +8,7 @@ namespace ASPNetSocialMedia.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int CloseFriendRelationId { get; set; }
+        public string? CloseFriendName { get; set; }
         public string? CloseUserEmail { get; set; }
         public string? CloseFriendEmail { get; set; }
     }

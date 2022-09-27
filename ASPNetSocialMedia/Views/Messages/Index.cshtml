@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Message Box</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Send a new message</a>
 </p>
 <table class="table">
     <thead>
@@ -18,7 +18,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.WhoPosted)
             </th>
-            <th>
+            <th hidden >
                 @Html.DisplayNameFor(model => model.WhoReceived)
             </th>
             <th></th>
@@ -33,7 +33,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.WhoPosted)
             </td>
-            <td>
+            <td hidden >
                 @Html.DisplayFor(modelItem => item.WhoReceived)
             </td>
             <td>

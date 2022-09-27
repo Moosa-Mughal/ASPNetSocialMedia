@@ -43,10 +43,7 @@ namespace ASPNetSocialMedia.Controllers
 
             return View(closeFriendRelation);
         }
-        public IActionResult Error()
-        {
-            return View();
-        }
+
         // GET: CloseFriendRelations/Create
         public IActionResult Create()
         {
@@ -58,47 +55,25 @@ namespace ASPNetSocialMedia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CloseFriendRelationId,CloseUserEmail,CloseFriendEmail")] CloseFriendRelation closeFriendRelation)
+        public async Task<IActionResult> Create([Bind("CloseFriendRelationId,CloseFriendName,CloseUserEmail,CloseFriendEmail")] CloseFriendRelation closeFriendRelation)
         {
             SqlConnection con = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB; Database=aspnet-ASPNetSocialMedia-2E74CB14-DD3A-4442-9DCF-EC4C63E8F3F6; Integrated Security=True");
             con.Open();
-            SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = '" + closeFriendRelation.CloseFriendEmail + "'", con);
-            check_User_Name.Parameters.AddWithValue("@user", closeFriendRelation.CloseUserEmail);
-            Console.Write(closeFriendRelation.CloseUserEmail);
 
+            SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = '" + closeFriendRelation.CloseFriendEmail + "'", con);
             int UserExist = (int)check_User_Name.ExecuteScalar();
 
             if (UserExist > 0)
             {
                 con.Close();
-                //Friend verification
-                SqlConnection conn = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB; Database=aspnet-ASPNetSocialMedia-2E74CB14-DD3A-4442-9DCF-EC4C63E8F3F6; Integrated Security=True");
-                con.Open();
-                SqlCommand check_UserExist = new SqlCommand("SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = '" + closeFriendRelation.CloseFriendEmail + "'", con);
-                check_User_Name.Parameters.AddWithValue("@user", closeFriendRelation.CloseUserEmail);
-                Console.Write(closeFriendRelation.CloseUserEmail);
-
-                int UserIsFriend = (int)check_UserExist.ExecuteScalar();
-
-                if (UserExist > 0)
+                if (ModelState.IsValid)
                 {
-                    conn.Close();
-                    if (ModelState.IsValid)
-                    {
-                        _context.Add(closeFriendRelation);
-                        await _context.SaveChangesAsync();
-                        return RedirectToAction(nameof(Index));
-                    }
-
-                    return View(closeFriendRelation);
-                }
-                else
-                {
-                    con.Close();
-                    ViewData["Success"] = "You are not friend with the user.";
-                    return View(closeFriendRelation);
+                    _context.Add(closeFriendRelation);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
 
+                return View(closeFriendRelation);
             }
             else
             {
@@ -109,12 +84,28 @@ namespace ASPNetSocialMedia.Controllers
             }
         }
 
+        // GET: CloseFriendRelations/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null || _context.CloseFriendRelation == null)
+            {
+                return NotFound();
+            }
+
+            var closeFriendRelation = await _context.CloseFriendRelation.FindAsync(id);
+            if (closeFriendRelation == null)
+            {
+                return NotFound();
+            }
+            return View(closeFriendRelation);
+        }
+
         // POST: CloseFriendRelations/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CloseFriendRelationId,CloseUserEmail,CloseFriendEmail")] CloseFriendRelation closeFriendRelation)
+        public async Task<IActionResult> Edit(int id, [Bind("CloseFriendRelationId,CloseFriendName,CloseUserEmail,CloseFriendEmail")] CloseFriendRelation closeFriendRelation)
         {
             if (id != closeFriendRelation.CloseFriendRelationId)
             {

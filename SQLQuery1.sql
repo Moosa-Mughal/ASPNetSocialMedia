@@ -1,1 +1,1 @@
-﻿SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = 'JeanGab@SuperTeam.com'
+﻿SELECT COUNT(*) FROM [dbo].[FriendRelation] WHERE [FriendEmail] = 'JeanGab@SuperTeam.com' AND [UserEmail] = 'admin@SuperTeam.com'

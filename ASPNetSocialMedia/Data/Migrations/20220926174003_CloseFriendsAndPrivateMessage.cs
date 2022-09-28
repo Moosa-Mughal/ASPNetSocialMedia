@@ -22,19 +22,7 @@ namespace ASPNetSocialMedia.Data.Migrations
                     table.PrimaryKey("PK_CloseFriendRelation", x => x.CloseFriendRelationId);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "PrivateMessage",
-                columns: table => new
-                {
-                    PrivateMessageId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PrivateMessageContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    WhoPosted = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PrivateMessage", x => x.PrivateMessageId);
-                });
+            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -42,8 +30,7 @@ namespace ASPNetSocialMedia.Data.Migrations
             migrationBuilder.DropTable(
                 name: "CloseFriendRelation");
 
-            migrationBuilder.DropTable(
-                name: "PrivateMessage");
+            
         }
     }
 }

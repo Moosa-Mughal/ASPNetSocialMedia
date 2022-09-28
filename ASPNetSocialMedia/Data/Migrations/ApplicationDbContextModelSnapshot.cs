@@ -152,28 +152,7 @@ namespace ASPNetSocialMedia.Data.Migrations
                     b.ToTable("FriendRelation");
                 });
 
-            modelBuilder.Entity("ASPNetSocialMedia.Models.Friendship", b =>
-                {
-                    b.Property<int>("RelationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RelationId"), 1L, 1);
-
-                    b.Property<int>("FriendId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RelationId");
-
-                    b.HasIndex("FriendId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Friendship");
-                });
+          
 
             modelBuilder.Entity("ASPNetSocialMedia.Models.Messages", b =>
                 {
@@ -214,75 +193,6 @@ namespace ASPNetSocialMedia.Data.Migrations
                     b.HasKey("PostId");
 
                     b.ToTable("Post");
-                });
-
-            modelBuilder.Entity("ASPNetSocialMedia.Models.PrivateMessage", b =>
-                {
-                    b.Property<int?>("PrivateMessageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("PrivateMessageId"), 1L, 1);
-
-                    b.Property<string>("PrivateMessageContent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WhoPosted")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PrivateMessageId");
-
-                    b.ToTable("PrivateMessage");
-                });
-
-            modelBuilder.Entity("ASPNetSocialMedia.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("AdminID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Biography")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProfileImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

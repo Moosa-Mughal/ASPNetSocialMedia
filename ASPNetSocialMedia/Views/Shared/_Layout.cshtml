@@ -32,7 +32,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Test Link</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -55,21 +55,22 @@
                     </div>
                 </div>
 
+                <a href="/ApplicationUser">Browse Users</a>
+                <a href="/Messages">Messages</a>
                 <div class="dropdown">
                     <a href="/FriendRelations">My Friends</a>
+                    
                     <div class="dropdown-content">
+                        <a href="/FriendRelations">Friend List</a>
                         <a href="/CloseFriendRelations">Close Friends</a>
-                        <a href="/ApplicationUser">Find Friends</a>
+                        
                     </div>
                 </div>
-                <div class="dropdown">
-                    <a href="/Messages">Messages</a>
-                    <div class="dropdown-content">
-                        <a href="/Home/Chat">Public Chat</a>
-                    </div>
-                </div>
+
+          
                 <a href="/Posts">My Posts</a>
                 <a href="/Home/CompleteProfile">Edit Profile</a>
+                <a href="/Home/Chat">Public Chat</a>
                 <a href="/Home/Weather">Weather</a>
                 <a href="/Home/About">About us</a>
                 <a href="/Home/Contact">Contact us</a>

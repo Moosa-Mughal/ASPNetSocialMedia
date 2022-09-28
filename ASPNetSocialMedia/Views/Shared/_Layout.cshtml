@@ -46,7 +46,8 @@
         {
             <!-- The sidebar -->
             <div class="sidebar">
- 
+
+                <!-- Problem with this part, need to be removed when starting the first time -->
                 <div class="card" id="profile">
                     <img src="@UserManager.GetUserAsync(User).Result.ProfileImage" alt="Avatar" style="width:100%">
                     <div class="container">
@@ -54,6 +55,7 @@
                         <p><i>@UserManager.GetUserAsync(User).Result.Biography</i></p>
                     </div>
                 </div>
+                <!-- End of problematic section -->
 
                 <a href="/ApplicationUser">Browse Users</a>
                 <a href="/Messages">Messages</a>

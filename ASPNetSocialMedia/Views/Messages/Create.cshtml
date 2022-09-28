@@ -4,9 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Messages</h4>
+<h4>Send a new message</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -18,14 +16,27 @@
                 <span asp-validation-for="MessageContent" class="text-danger"></span>
             </div>
             <div hidden class="form-group">
-                <label asp-for="WhoPosted" class="control-label"></label>
-                <input asp-for="WhoPosted" value="@User.Identity.Name" class="form-control" />
-                <span asp-validation-for="WhoPosted" class="text-danger"></span>
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" value="@User.Identity.Name" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WhoReceived" class="control-label"></label>
-                <input asp-for="WhoReceived" class="form-control" />
-                <span asp-validation-for="WhoReceived" class="text-danger"></span>
+                <label asp-for="FriendEmail" class="control-label"></label>
+                <input asp-for="FriendEmail" class="form-control" />
+                <span asp-validation-for="FriendEmail" class="text-danger"></span>
+            </div>
+            <div hidden class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" value="@DateTime.Today.ToString("yyyy-MM-dd")" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div>
+                @if (ViewData["Success"] != null)
+                {
+                    <div id="successMessage">
+                        @ViewData["Success"]
+                    </div>
+                }
             </div>
             <br />
             <div class="form-group">
@@ -36,7 +47,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Message Box</a>
 </div>
 
 @section Scripts {

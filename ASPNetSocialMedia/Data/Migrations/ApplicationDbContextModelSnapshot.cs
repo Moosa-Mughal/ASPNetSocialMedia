@@ -152,8 +152,6 @@ namespace ASPNetSocialMedia.Data.Migrations
                     b.ToTable("FriendRelation");
                 });
 
-          
-
             modelBuilder.Entity("ASPNetSocialMedia.Models.Messages", b =>
                 {
                     b.Property<int?>("MessageId")
@@ -162,13 +160,16 @@ namespace ASPNetSocialMedia.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("MessageId"), 1L, 1);
 
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FriendEmail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("MessageContent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("WhoPosted")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("WhoReceived")
+                    b.Property<string>("UserEmail")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MessageId");
@@ -330,25 +331,6 @@ namespace ASPNetSocialMedia.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("ASPNetSocialMedia.Models.Friendship", b =>
-                {
-                    b.HasOne("ASPNetSocialMedia.Models.User", "Friend")
-                        .WithMany()
-                        .HasForeignKey("FriendId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ASPNetSocialMedia.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Friend");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

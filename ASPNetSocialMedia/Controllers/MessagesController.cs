@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ASPNetSocialMedia.Data;
 using ASPNetSocialMedia.Models;
+using Microsoft.Data.SqlClient;
 
 namespace ASPNetSocialMedia.Controllers
 {
@@ -54,15 +55,33 @@ namespace ASPNetSocialMedia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MessageId,MessageContent,WhoPosted,WhoReceived")] Messages messages)
+        public async Task<IActionResult> Create([Bind("MessageId,MessageContent,UserEmail,FriendEmail,CreationDate")] Messages messages)
         {
-            if (ModelState.IsValid)
+            SqlConnection con = new SqlConnection(@"Server=(localdb)\MSSQLLocalDB; Database=aspnet-ASPNetSocialMedia-2E74CB14-DD3A-4442-9DCF-EC4C63E8F3F6; Integrated Security=True");
+            con.Open();
+
+            SqlCommand check_User_Name = new SqlCommand("SELECT COUNT(*) FROM [dbo].[AspNetUsers] WHERE [Email] = '" + messages.FriendEmail + "'", con);
+            int UserExist = (int)check_User_Name.ExecuteScalar();
+
+            if (UserExist > 0)
             {
-                _context.Add(messages);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                con.Close();
+                if (ModelState.IsValid)
+                {
+                    _context.Add(messages);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(messages);
             }
-            return View(messages);
+            else
+            {
+                Console.WriteLine("Error, user doesn't exist");
+                con.Close();
+                ViewData["Success"] = "No user with this email is registered";
+                return View(messages);
+            }
+            
         }
 
         // GET: Messages/Edit/5
@@ -86,7 +105,7 @@ namespace ASPNetSocialMedia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int? id, [Bind("MessageId,MessageContent,WhoPosted,WhoReceived")] Messages messages)
+        public async Task<IActionResult> Edit(int? id, [Bind("MessageId,MessageContent,UserEmail,FriendEmail,CreationDate")] Messages messages)
         {
             if (id != messages.MessageId)
             {

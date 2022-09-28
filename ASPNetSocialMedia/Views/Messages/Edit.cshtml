@@ -19,14 +19,19 @@
                 <span asp-validation-for="MessageContent" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WhoPosted" class="control-label"></label>
-                <input asp-for="WhoPosted" class="form-control" />
-                <span asp-validation-for="WhoPosted" class="text-danger"></span>
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WhoReceived" class="control-label"></label>
-                <input asp-for="WhoReceived" class="form-control" />
-                <span asp-validation-for="WhoReceived" class="text-danger"></span>
+                <label asp-for="FriendEmail" class="control-label"></label>
+                <input asp-for="FriendEmail" class="form-control" />
+                <span asp-validation-for="FriendEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

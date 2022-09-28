@@ -13,13 +13,16 @@
     <thead>
         <tr>
             <th>
-                Message
+                Message Content
+            </th>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.UserEmail)
             </th>
             <th>
-                Sender
+                From
             </th>
-            <th hidden >
-                @Html.DisplayNameFor(model => model.WhoReceived)
+            <th>
+                Date
             </th>
             <th></th>
         </tr>
@@ -30,11 +33,14 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MessageContent)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WhoPosted)
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.UserEmail)
             </td>
-            <td hidden >
-                @Html.DisplayFor(modelItem => item.WhoReceived)
+            <td>
+                @Html.DisplayFor(modelItem => item.FriendEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.MessageId">Details</a> 

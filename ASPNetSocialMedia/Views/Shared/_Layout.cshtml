@@ -31,7 +31,9 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex">
                     <ul class="navbar-nav flex-grow-1">
-                        
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contact">Test Link</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -70,6 +72,7 @@
                 <a href="/Home/CompleteProfile">Edit Profile</a>
                 <a href="/Home/Weather">Weather</a>
                 <a href="/Home/About">About us</a>
+                <a href="/Home/Contact">Contact us</a>
                 <a href="/Identity/Account/Logout?returnUrl=%2F">Logout</a>
             </div>
         }

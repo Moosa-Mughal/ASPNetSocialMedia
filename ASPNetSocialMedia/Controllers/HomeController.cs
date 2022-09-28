@@ -22,6 +22,10 @@ namespace ASPNetSocialMedia.Controllers
         {
             return View();
         }
+        public IActionResult Contact()
+        {
+            return View();
+        }
         public IActionResult Feed()
         {
             return View();
